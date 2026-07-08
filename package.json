@@ -1,0 +1,19 @@
+﻿{
+  "name": "software-tools-practice-blog",
+  "version": "1.0.0",
+  "description": "A static practice blog for Software Development Tools Practice course assessment.",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "check": "node server.js --check"
+  },
+  "keywords": [
+    "practice",
+    "git",
+    "linux",
+    "ssh",
+    "deployment"
+  ],
+  "author": "course-practice-team",
+  "license": "UNLICENSED"
+}

@@ -1,0 +1,21 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Web 站点部署</title>
+    <link rel="stylesheet" href="../assets/styles.css" />
+  </head>
+  <body>
+    <header class="topbar"><a class="brand" href="../index.html">软件开发工具实践</a></header>
+    <main class="section">
+      <p class="eyebrow">Web Deploy</p>
+      <h1>Web 站点部署</h1>
+      <p>本阶段目标是通过 SSH 管理 Linux 虚拟机，将静态站点部署到 Nginx 并完成浏览器访问验证。</p>
+      <h2>部署链路</h2>
+      <p>本地生成或整理静态文件，通过 `scp` 或 `rsync` 上传到 `/var/www/practice-blog`，再配置 Nginx 站点并重载服务。</p>
+      <h2>建议截图</h2>
+      <p>截图应包含 SSH 登录成功、文件同步命令、`systemctl status nginx`、浏览器访问站点页面。</p>
+    </main>
+  </body>
+</html>

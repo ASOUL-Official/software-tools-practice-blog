@@ -1,0 +1,79 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>软件开发工具实践 | 项目博客</title>
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="返回首页">软件开发工具实践</a>
+      <nav class="nav" aria-label="主导航">
+        <a href="#workflow">流程</a>
+        <a href="#evidence">证据</a>
+        <a href="#posts">文章</a>
+        <a href="#deploy">部署</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow">本地开发 · Git 管理 · Linux 配置 · 远程部署</p>
+          <h1 id="hero-title">一个可以验收的技术博客项目</h1>
+          <p class="hero-text">用一个静态站点把课程中的工具串成完整链路：从写 Markdown、管理代码，到配置 Linux、使用 SSH，再把网页部署到服务器。</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#posts">查看实验记录</a>
+            <a class="button secondary" href="docs/report-outline.md">报告提纲</a>
+          </div>
+        </div>
+        <figure class="hero-media">
+          <img src="assets/score-card.png" alt="实验成绩考核项目和内容表" />
+          <figcaption>评分项直接映射到项目任务，方便答辩时逐项展示。</figcaption>
+        </figure>
+      </section>
+
+      <section id="workflow" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Workflow</p>
+          <h2>项目实施路径</h2>
+        </div>
+        <div class="timeline" id="workflow-list"></div>
+      </section>
+
+      <section id="evidence" class="section split">
+        <div>
+          <p class="eyebrow">Evidence</p>
+          <h2>验收证据清单</h2>
+          <p>每一项配置都保留命令结果、截图和 Git 提交记录。答辩时按评分项展示，报告里按实验过程展开。</p>
+        </div>
+        <div class="evidence-grid" id="evidence-list"></div>
+      </section>
+
+      <section id="posts" class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Posts</p>
+          <h2>实验记录文章</h2>
+        </div>
+        <div class="post-grid" id="post-list"></div>
+      </section>
+
+      <section id="deploy" class="section deploy-band">
+        <div>
+          <p class="eyebrow">Deploy</p>
+          <h2>部署目标</h2>
+          <p>优先完成 Linux 虚拟机 + Nginx 局域网部署；如果时间充足，再补 GitHub Pages 作为公网展示。</p>
+        </div>
+        <a class="button primary" href="docs/deployment-guide.md">查看部署说明</a>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Software Development Tools Practice</span>
+      <span>Built for course assessment</span>
+    </footer>
+
+    <script src="assets/app.js"></script>
+  </body>
+</html>
