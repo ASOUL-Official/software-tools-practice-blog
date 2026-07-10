@@ -31,3 +31,11 @@ git commit -m "init practice blog"
 ```
 
 后续每完成一个实验配置，单独提交一次，方便展示代码版本历史。
+
+## 验收材料
+
+- [评分项映射表](docs/assessment-map.md)
+- [验收任务清单](docs/acceptance-checklist.md)
+- [截图清单](docs/screenshot-checklist.md)
+- [实验报告提纲](docs/report-outline.md)
+
