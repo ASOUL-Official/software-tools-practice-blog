@@ -48,8 +48,8 @@
             <pre><code>sudo apt install openssh-server rsync -y
 sudo systemctl enable --now ssh
 systemctl status ssh
-ss -tlnp | grep :22
-ssh dev@192.168.56.101</code></pre>
+ss -tlnp | grep :2222
+ssh -i ~/.ssh/practice_wsl_ed25519 -p 2222 dev@Ubuntu-IP</code></pre>
             <p>这部分重点证明虚拟机可以被远程管理，且 SSH 服务、端口和登录方式配置正确。</p>
           </section>
 
@@ -60,7 +60,7 @@ sudo mkdir -p /var/www/practice-blog
 sudo rsync -av --delete /home/dev/practice-blog/ /var/www/practice-blog/
 sudo nginx -t
 sudo systemctl reload nginx</code></pre>
-            <p>仓库中的 <code>scripts/deploy-nginx.sh</code> 可以作为部署脚本证据，后续根据你的虚拟机 IP 和用户名微调即可。</p>
+            <p>仓库中的 <code>scripts/deploy-nginx.sh</code> 已作为部署脚本证据，默认将站点部署到 Nginx 的 <code>8080</code> 端口。</p>
           </section>
 
           <section id="evidence" class="article-block">
@@ -73,6 +73,18 @@ sudo systemctl reload nginx</code></pre>
               <figure class="screenshot-card">
                 <img src="../assets/screenshots/03-local-dashboard.png" alt="本地验收看板网页截图" />
                 <figcaption>本地站点访问结果：验收看板页面正常渲染。</figcaption>
+              </figure>
+              <figure class="screenshot-card">
+                <img src="../assets/screenshots/07-ssh-rsync.png" alt="SSH 服务和远程登录截图" />
+                <figcaption>远程管理配置：SSH 端口、服务状态和密钥登录。</figcaption>
+              </figure>
+              <figure class="screenshot-card">
+                <img src="../assets/screenshots/08-nginx-service.png" alt="Nginx 服务状态截图" />
+                <figcaption>Web 部署服务：Nginx 配置检查、端口和服务状态。</figcaption>
+              </figure>
+              <figure class="screenshot-card">
+                <img src="../assets/screenshots/09-nginx-site.png" alt="Nginx 部署后的网页访问截图" />
+                <figcaption>最终访问结果：通过 Nginx 打开部署后的项目页面。</figcaption>
               </figure>
             </div>
             <table class="evidence-table">

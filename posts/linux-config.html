@@ -26,7 +26,7 @@
       <section class="article-hero">
         <p class="eyebrow">Linux Config</p>
         <h1>Linux 环境配置</h1>
-        <p class="lead">本页用于整理 Ubuntu 虚拟机、系统 profile、用户环境变量和账户权限配置，对应评分项“Linux环境配置”和“Linux账户配置”。</p>
+        <p class="lead">本页用于整理 Ubuntu 22.04 WSL2、系统 profile、用户环境变量和账户权限配置，对应评分项“Linux环境配置”和“Linux账户配置”。</p>
       </section>
 
       <div class="article-layout">
@@ -40,7 +40,7 @@
         <div class="article-content">
           <section id="goal" class="article-block">
             <h2>实验目标</h2>
-            <p>完成一台可用于部署的 Linux 虚拟机配置，使它具备固定网络地址、清晰主机名、独立开发用户、可追踪的环境变量配置和合理的文件权限。</p>
+            <p>完成一套可用于部署的 Linux 环境配置，使它具备可访问网络地址、清晰主机名、独立开发用户、可追踪的环境变量配置和合理的文件权限。</p>
           </section>
 
           <section id="network" class="article-block">
@@ -66,6 +66,16 @@ chmod 755 /home/dev/practice-blog</code></pre>
 
           <section id="evidence" class="article-block">
             <h2>验收证据</h2>
+            <div class="screenshot-grid">
+              <figure class="screenshot-card">
+                <img src="../assets/screenshots/05-linux-env.png" alt="Linux 环境配置截图" />
+                <figcaption>Ubuntu 22.04、网络地址、profile 配置和环境变量。</figcaption>
+              </figure>
+              <figure class="screenshot-card">
+                <img src="../assets/screenshots/06-linux-user.png" alt="Linux 用户和权限截图" />
+                <figcaption>dev 用户、sudo 组、home 目录和关键文件权限。</figcaption>
+              </figure>
+            </div>
             <table class="evidence-table">
               <thead>
                 <tr>

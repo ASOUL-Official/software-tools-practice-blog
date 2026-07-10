@@ -5,6 +5,7 @@ APP_NAME="practice-blog"
 SOURCE_DIR="${1:-$HOME/practice-blog}"
 TARGET_DIR="/var/www/${APP_NAME}"
 NGINX_CONF="/etc/nginx/sites-available/${APP_NAME}"
+APP_PORT="${APP_PORT:-8080}"
 
 if [ ! -d "$SOURCE_DIR" ]; then
   echo "Source directory not found: $SOURCE_DIR"
@@ -19,7 +20,7 @@ sudo rsync -av --delete \
 
 sudo tee "$NGINX_CONF" >/dev/null <<NGINX
 server {
-    listen 80;
+    listen ${APP_PORT};
     server_name _;
     root ${TARGET_DIR};
     index index.html;
@@ -34,4 +35,4 @@ sudo ln -sfn "$NGINX_CONF" "/etc/nginx/sites-enabled/${APP_NAME}"
 sudo nginx -t
 sudo systemctl reload nginx
 
-echo "Deployed ${APP_NAME} to ${TARGET_DIR}"
+echo "Deployed ${APP_NAME} to ${TARGET_DIR} on port ${APP_PORT}"

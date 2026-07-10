@@ -4,7 +4,7 @@ const scoreItems = [
     score: '10',
     content: '项目配置、编辑器配置、Git 配置等',
     status: 'done',
-    statusText: '已完成基础版',
+    statusText: '已补真实截图',
     evidence: ['GitHub 仓库', '阶段提交记录', '项目目录结构']
   },
   {
@@ -12,39 +12,39 @@ const scoreItems = [
     score: '10',
     content: '语言包、包管理器、关键软件包及配置等',
     status: 'done',
-    statusText: '已完成基础版',
+    statusText: '已补真实截图',
     evidence: ['Node 本地服务', 'package.json', '浏览器访问截图']
   },
   {
     title: 'Linux 环境配置',
     score: '10',
     content: '系统 profile 配置、用户配置、环境变量等',
-    status: 'pending',
-    statusText: '待补真实截图',
+    status: 'done',
+    statusText: '已补真实截图',
     evidence: ['ip addr', 'hostnamectl', '.bashrc / profile']
   },
   {
     title: 'Linux 账户配置',
     score: '10',
     content: '账户配置、Home 配置、关键文件的权限配置等',
-    status: 'pending',
-    statusText: '待补真实截图',
+    status: 'done',
+    statusText: '已补真实截图',
     evidence: ['id dev', 'groups dev', 'chmod / chown']
   },
   {
     title: '远程管理配置',
     score: '10',
     content: 'SSH 服务、端口配置、登录配置等',
-    status: 'pending',
-    statusText: '待补真实截图',
+    status: 'done',
+    statusText: '已补真实截图',
     evidence: ['SSH 服务状态', '端口监听', '远程登录']
   },
   {
     title: 'Web 站点部署',
     score: '10',
     content: '可运行的站点、基本功能、部署脚本',
-    status: 'pending',
-    statusText: '待部署验证',
+    status: 'done',
+    statusText: '已部署验证',
     evidence: ['Nginx 配置', '部署脚本', '最终访问页面']
   }
 ];

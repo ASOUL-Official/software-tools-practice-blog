@@ -1,4 +1,6 @@
-﻿# 部署说明
+# 部署说明
+
+本项目当前使用 Ubuntu 22.04 WSL2 作为 Linux 实验环境，SSH 端口为 `2222`，Nginx 站点端口为 `8080`。
 
 ## 一、本地预览
 
@@ -6,38 +8,77 @@
 node server.js
 ```
 
-访问：`http://localhost:4000`
+访问：
 
-## 二、Linux 虚拟机准备
+```text
+http://localhost:4000
+```
+
+## 二、Linux 环境准备
+
+Ubuntu 中安装所需软件：
 
 ```bash
 sudo apt update
 sudo apt install nginx openssh-server rsync -y
-sudo systemctl enable --now ssh
-sudo systemctl enable --now nginx
 ```
 
-建议虚拟机使用 Host-Only 静态地址，例如 `192.168.56.101`。
-
-## 三、上传站点文件
-
-在本机项目目录执行：
+创建并检查 `dev` 用户：
 
 ```bash
-rsync -avz --delete ./ dev@192.168.56.101:/home/dev/practice-blog/
+sudo useradd -m -s /bin/bash dev
+sudo usermod -aG sudo dev
+id dev
+groups dev
 ```
 
-在虚拟机中发布到 Nginx 目录：
+## 三、SSH 配置
+
+SSH 服务配置为端口 `2222`，并使用密钥登录。
 
 ```bash
-sudo mkdir -p /var/www/practice-blog
-sudo rsync -av --delete /home/dev/practice-blog/ /var/www/practice-blog/
-sudo chown -R www-data:www-data /var/www/practice-blog
+sudo nano /etc/ssh/sshd_config
 ```
 
-## 四、使用部署脚本
+关键配置：
 
-仓库已经提供脚本：`scripts/deploy-nginx.sh`。把项目同步到虚拟机后，在虚拟机里执行：
+```text
+Port 2222
+PubkeyAuthentication yes
+PasswordAuthentication no
+```
+
+重启并检查：
+
+```bash
+sudo systemctl restart ssh
+ss -tlnp | grep :2222
+systemctl status ssh
+```
+
+Windows 侧登录示例：
+
+```powershell
+ssh -i ~/.ssh/practice_wsl_ed25519 -p 2222 dev@<Ubuntu-IP>
+```
+
+## 四、同步站点文件
+
+在 Ubuntu 中，项目位于：
+
+```text
+/home/dev/practice-blog
+```
+
+也可以用 `rsync` 重新同步：
+
+```bash
+rsync -av --delete /mnt/c/Users/liuzhanxian/Desktop/1/practice-blog/ /home/dev/practice-blog/
+```
+
+## 五、使用部署脚本
+
+仓库提供部署脚本：
 
 ```bash
 cd ~/practice-blog
@@ -45,7 +86,7 @@ chmod +x scripts/deploy-nginx.sh
 ./scripts/deploy-nginx.sh
 ```
 
-脚本会自动完成：
+默认部署端口为 `8080`。脚本会自动完成：
 
 - 创建 `/var/www/practice-blog`
 - 同步静态文件
@@ -53,40 +94,25 @@ chmod +x scripts/deploy-nginx.sh
 - 执行 `nginx -t`
 - 重载 Nginx
 
-## 五、手动配置 Nginx
+## 六、访问和验收
 
-如果需要手动操作，可执行：
+Windows 浏览器访问，推荐使用 Ubuntu 的 WSL 内网 IP：
+
+```text
+http://<Ubuntu-IP>:8080
+```
+
+可用下面命令查看 Ubuntu IP：
 
 ```bash
-sudo nano /etc/nginx/sites-available/practice-blog
+hostname -I
 ```
 
-写入：
+验收截图建议：
 
-```nginx
-server {
-    listen 80;
-    server_name _;
-    root /var/www/practice-blog;
-    index index.html;
-
-    location / {
-        try_files $uri $uri/ =404;
-    }
-}
-```
-
-启用配置：
-
-```bash
-sudo ln -s /etc/nginx/sites-available/practice-blog /etc/nginx/sites-enabled/practice-blog
-sudo nginx -t
-sudo systemctl reload nginx
-```
-
-## 六、验收截图
-
-- `ssh dev@192.168.56.101` 登录成功
-- `systemctl status nginx` 服务运行
-- 浏览器访问 `http://192.168.56.101`
-- Git 提交历史和远程仓库页面
+- `systemctl status ssh`
+- `ss -tlnp | grep :2222`
+- SSH 登录成功
+- `nginx -t`
+- `systemctl status nginx`
+- 浏览器访问 `http://<Ubuntu-IP>:8080`
