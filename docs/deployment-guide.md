@@ -35,7 +35,27 @@ sudo rsync -av --delete /home/dev/practice-blog/ /var/www/practice-blog/
 sudo chown -R www-data:www-data /var/www/practice-blog
 ```
 
-## 四、配置 Nginx
+## 四、使用部署脚本
+
+仓库已经提供脚本：`scripts/deploy-nginx.sh`。把项目同步到虚拟机后，在虚拟机里执行：
+
+```bash
+cd ~/practice-blog
+chmod +x scripts/deploy-nginx.sh
+./scripts/deploy-nginx.sh
+```
+
+脚本会自动完成：
+
+- 创建 `/var/www/practice-blog`
+- 同步静态文件
+- 写入 Nginx 站点配置
+- 执行 `nginx -t`
+- 重载 Nginx
+
+## 五、手动配置 Nginx
+
+如果需要手动操作，可执行：
 
 ```bash
 sudo nano /etc/nginx/sites-available/practice-blog
@@ -64,7 +84,7 @@ sudo nginx -t
 sudo systemctl reload nginx
 ```
 
-## 五、验收截图
+## 六、验收截图
 
 - `ssh dev@192.168.56.101` 登录成功
 - `systemctl status nginx` 服务运行

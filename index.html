@@ -1,80 +1,131 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>软件开发工具实践 | 项目博客</title>
+    <title>软件开发工具实践 | 验收看板</title>
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
     <header class="topbar">
-      <a class="brand" href="#top" aria-label="返回首页">软件开发工具实践</a>
+      <a class="brand" href="#top" aria-label="返回首页">
+        <span class="brand-mark">SD</span>
+        <span>
+          <strong>软件开发工具实践</strong>
+          <small>课程验收项目</small>
+        </span>
+      </a>
       <nav class="nav" aria-label="主导航">
-        <a href="#workflow">流程</a>
+        <a href="#score">评分项</a>
         <a href="#evidence">证据</a>
-        <a href="#posts">文章</a>
-        <a href="#deploy">部署</a>
+        <a href="#records">记录</a>
+        <a href="#commands">命令</a>
+        <a href="#deliverables">材料</a>
       </nav>
     </header>
 
     <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow">本地开发 · Git 管理 · Linux 配置 · 远程部署</p>
-          <h1 id="hero-title">一个可以验收的技术博客项目</h1>
-          <p class="hero-text">用一个静态站点把课程中的工具串成完整链路：从写 Markdown、管理代码，到配置 Linux、使用 SSH，再把网页部署到服务器。</p>
+      <section class="overview" aria-labelledby="page-title">
+        <div class="overview-copy">
+          <p class="eyebrow">Assessment Dashboard</p>
+          <h1 id="page-title">软件开发工具实践验收看板</h1>
+          <p class="lead">把本地开发、Git 管理、Linux 配置、SSH 远程管理和 Web 部署整理成一个可演示、可提交、可扩展的完整项目。</p>
           <div class="hero-actions">
-            <a class="button primary" href="#posts">查看实验记录</a>
-            <a class="button secondary" href="docs/report-outline.md">报告提纲</a><a class="button secondary" href="docs/assessment-map.md">评分映射</a>
+            <a class="button primary" href="#score">查看评分覆盖</a>
+            <a class="button secondary" href="https://github.com/ASOUL-Official/software-tools-practice-blog">打开 GitHub</a>
+            <a class="button ghost" href="docs/acceptance-checklist.md">验收清单</a>
           </div>
         </div>
-        <figure class="hero-media">
-          <img src="assets/score-card.png" alt="实验成绩考核项目和内容表" />
-          <figcaption>评分项直接映射到项目任务，方便答辩时逐项展示。</figcaption>
-        </figure>
+
+        <aside class="status-panel" aria-label="项目当前状态">
+          <div class="status-header">
+            <span class="status-dot"></span>
+            <span>当前项目状态</span>
+          </div>
+          <div class="status-metric">
+            <strong>60</strong>
+            <span>分考核项已全部映射</span>
+          </div>
+          <dl class="status-list">
+            <div>
+              <dt>代码仓库</dt>
+              <dd>已推送 GitHub</dd>
+            </div>
+            <div>
+              <dt>本地站点</dt>
+              <dd>可通过 localhost 访问</dd>
+            </div>
+            <div>
+              <dt>后续重点</dt>
+              <dd>补 Linux / SSH / Nginx 真实截图</dd>
+            </div>
+          </dl>
+        </aside>
       </section>
 
-      <section id="workflow" class="section">
+      <section id="score" class="section">
         <div class="section-heading">
-          <p class="eyebrow">Workflow</p>
-          <h2>项目实施路径</h2>
+          <p class="eyebrow">Score Coverage</p>
+          <h2>6 个评分项逐项覆盖</h2>
+          <p>每个模块都对应课程给出的考核内容，并标明现在能展示什么、下一步要补什么。</p>
         </div>
-        <div class="timeline" id="workflow-list"></div>
+        <div class="score-grid" id="score-list"></div>
       </section>
 
-      <section id="evidence" class="section split">
-        <div>
+      <section id="evidence" class="section evidence-section">
+        <div class="section-heading">
           <p class="eyebrow">Evidence</p>
-          <h2>验收证据清单</h2>
-          <p>每一项配置都保留命令结果、截图和 Git 提交记录。答辩时按评分项展示，报告里按实验过程展开。</p>
+          <h2>答辩证据怎么组织</h2>
+          <p>建议按评分项展示，而不是按时间流水账展示。这样老师看起来最省力，你也最不容易漏分。</p>
         </div>
-        <div class="evidence-grid" id="evidence-list"></div>
+        <div class="evidence-layout">
+          <div class="evidence-grid" id="evidence-list"></div>
+          <figure class="score-image">
+            <img src="assets/score-card.png" alt="实验成绩考核项目和内容表" />
+            <figcaption>课程评分表：项目配置、Web 环境、Linux 环境、Linux 账户、远程管理、站点部署。</figcaption>
+          </figure>
+        </div>
       </section>
 
-      <section id="posts" class="section">
+      <section id="records" class="section">
         <div class="section-heading">
-          <p class="eyebrow">Posts</p>
+          <p class="eyebrow">Experiment Records</p>
           <h2>实验记录文章</h2>
+          <p>这三篇文章承担“讲清楚过程”的作用，后续把你的截图和真实命令补进去即可。</p>
         </div>
         <div class="post-grid" id="post-list"></div>
       </section>
 
-      <section id="deploy" class="section deploy-band">
-        <div>
-          <p class="eyebrow">Deploy</p>
-          <h2>部署目标</h2>
-          <p>优先完成 Linux 虚拟机 + Nginx 局域网部署；如果时间充足，再补 GitHub Pages 作为公网展示。</p>
+      <section id="commands" class="section command-section">
+        <div class="section-heading">
+          <p class="eyebrow">Runbook</p>
+          <h2>常用命令速查</h2>
+          <p>把答辩时最容易被问到的运行、版本控制和部署命令放在一处，现场展示更稳。</p>
         </div>
-        <a class="button primary" href="docs/deployment-guide.md">查看部署说明</a>
+        <div class="command-grid" id="command-list"></div>
+      </section>
+
+      <section id="deliverables" class="section deliverables">
+        <div>
+          <p class="eyebrow">Deliverables</p>
+          <h2>提交材料入口</h2>
+          <p>报告、验收清单、评分映射和部署说明都已经集中在 `docs/` 目录，后续只需要继续填真实截图和过程。</p>
+        </div>
+        <div class="doc-links">
+          <a href="docs/assessment-map.md">评分项映射表</a>
+          <a href="docs/acceptance-checklist.md">验收任务清单</a>
+          <a href="docs/screenshot-checklist.md">截图清单</a>
+          <a href="docs/report-outline.md">实验报告提纲</a>
+          <a href="docs/deployment-guide.md">部署说明</a>
+        </div>
       </section>
     </main>
 
     <footer class="footer">
       <span>Software Development Tools Practice</span>
-      <span>Built for course assessment</span>
+      <span>Git · Linux · SSH · Nginx · Web</span>
     </footer>
 
     <script src="assets/app.js"></script>
   </body>
 </html>
-

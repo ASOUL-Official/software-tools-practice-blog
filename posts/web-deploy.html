@@ -1,21 +1,99 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Web 站点部署</title>
+    <title>Web 站点部署 | 软件开发工具实践</title>
     <link rel="stylesheet" href="../assets/styles.css" />
   </head>
   <body>
-    <header class="topbar"><a class="brand" href="../index.html">软件开发工具实践</a></header>
-    <main class="section">
-      <p class="eyebrow">Web Deploy</p>
-      <h1>Web 站点部署</h1>
-      <p>本阶段目标是通过 SSH 管理 Linux 虚拟机，将静态站点部署到 Nginx 并完成浏览器访问验证。</p>
-      <h2>部署链路</h2>
-      <p>本地生成或整理静态文件，通过 `scp` 或 `rsync` 上传到 `/var/www/practice-blog`，再配置 Nginx 站点并重载服务。</p>
-      <h2>建议截图</h2>
-      <p>截图应包含 SSH 登录成功、文件同步命令、`systemctl status nginx`、浏览器访问站点页面。</p>
+    <header class="topbar">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">SD</span>
+        <span>
+          <strong>软件开发工具实践</strong>
+          <small>返回验收看板</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="文章导航">
+        <a href="../index.html#commands">命令</a>
+        <a href="../docs/deployment-guide.md">部署说明</a>
+        <a href="../docs/acceptance-checklist.md">验收清单</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="article-hero">
+        <p class="eyebrow">Web Deploy</p>
+        <h1>Web 站点部署</h1>
+        <p class="lead">本页用于展示从本地静态站点到 Linux + Nginx 的部署链路，对应评分项“远程管理配置”和“Web站点部署”。</p>
+      </section>
+
+      <div class="article-layout">
+        <aside class="article-aside" aria-label="本页目录">
+          <a href="#goal">目标</a>
+          <a href="#ssh">远程管理</a>
+          <a href="#nginx">站点部署</a>
+          <a href="#evidence">证据表</a>
+        </aside>
+
+        <div class="article-content">
+          <section id="goal" class="article-block">
+            <h2>实验目标</h2>
+            <p>将本地网页项目传输到 Linux 虚拟机，通过 Nginx 提供 Web 访问服务，并用截图证明 SSH、端口、部署脚本和最终页面都可用。</p>
+          </section>
+
+          <section id="ssh" class="article-block">
+            <h2>远程管理配置</h2>
+            <pre><code>sudo apt install openssh-server rsync -y
+sudo systemctl enable --now ssh
+systemctl status ssh
+ss -tlnp | grep :22
+ssh dev@192.168.56.101</code></pre>
+            <p>这部分重点证明虚拟机可以被远程管理，且 SSH 服务、端口和登录方式配置正确。</p>
+          </section>
+
+          <section id="nginx" class="article-block">
+            <h2>Web 站点部署</h2>
+            <pre><code>sudo apt install nginx -y
+sudo mkdir -p /var/www/practice-blog
+sudo rsync -av --delete /home/dev/practice-blog/ /var/www/practice-blog/
+sudo nginx -t
+sudo systemctl reload nginx</code></pre>
+            <p>仓库中的 <code>scripts/deploy-nginx.sh</code> 可以作为部署脚本证据，后续根据你的虚拟机 IP 和用户名微调即可。</p>
+          </section>
+
+          <section id="evidence" class="article-block">
+            <h2>验收证据</h2>
+            <table class="evidence-table">
+              <thead>
+                <tr>
+                  <th>证据</th>
+                  <th>说明</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>SSH 登录截图</td>
+                  <td>显示宿主机成功登录虚拟机。</td>
+                </tr>
+                <tr>
+                  <td>Nginx 状态截图</td>
+                  <td>显示服务运行正常，配置检查通过。</td>
+                </tr>
+                <tr>
+                  <td>浏览器访问截图</td>
+                  <td>显示通过虚拟机 IP 打开本项目首页。</td>
+                </tr>
+                <tr>
+                  <td>部署脚本</td>
+                  <td>展示项目具备可复用的部署流程，而不是手动复制文件。</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+      </div>
     </main>
   </body>
 </html>

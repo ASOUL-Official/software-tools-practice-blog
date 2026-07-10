@@ -46,7 +46,14 @@ function serve(req, res) {
 }
 
 if (process.argv.includes('--check')) {
-  const required = ['index.html', 'assets/styles.css', 'assets/app.js', 'docs/report-outline.md'];
+  const required = [
+    'index.html',
+    'assets/styles.css',
+    'assets/app.js',
+    'docs/report-outline.md',
+    'docs/assessment-map.md',
+    'scripts/deploy-nginx.sh'
+  ];
   const missing = required.filter((item) => !fs.existsSync(path.join(root, item)));
   if (missing.length) {
     console.error(`Missing files: ${missing.join(', ')}`);

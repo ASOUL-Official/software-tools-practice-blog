@@ -1,14 +1,14 @@
-﻿# 软件开发工具实践项目
+# 软件开发工具实践验收看板
 
-这是一个用于课程验收的静态技术博客项目，目标是串起完整实践链路：本地开发、Git 管理、Linux 环境、SSH 远程管理和 Web 站点部署。
+这是一个用于课程验收的静态 Web 项目，目标是把本地开发、Git 管理、Linux 环境配置、SSH 远程管理和 Web 站点部署串成一条完整实践链路。
 
-## 项目内容
+## 当前成果
 
-- `index.html`：可直接访问的站点首页
-- `posts/`：实验过程文章
-- `assets/`：样式、脚本和图片资源
-- `docs/`：部署说明、实验报告素材、截图清单
-- `server.js`：无需第三方依赖的本地预览服务
+- 已完成可运行的静态验收看板：`index.html`
+- 已完成 3 篇实验记录页：`posts/`
+- 已整理评分映射、验收清单、截图清单和报告提纲：`docs/`
+- 已提供 Linux + Nginx 部署脚本：`scripts/deploy-nginx.sh`
+- 已推送到 GitHub 仓库，便于展示版本历史
 
 ## 本地运行
 
@@ -22,15 +22,18 @@ node server.js
 http://localhost:4000
 ```
 
-## 建议 Git 提交流程
+## 项目结构
 
-```powershell
-git init
-git add .
-git commit -m "init practice blog"
+```text
+practice-blog/
+├── index.html                  # 验收看板首页
+├── assets/                     # 样式、脚本和评分图片
+├── posts/                      # 实验记录文章
+├── docs/                       # 验收材料和报告素材
+├── scripts/deploy-nginx.sh     # Linux + Nginx 部署脚本
+├── server.js                   # 本地预览服务
+└── package.json                # 项目脚本配置
 ```
-
-后续每完成一个实验配置，单独提交一次，方便展示代码版本历史。
 
 ## 验收材料
 
@@ -38,4 +41,12 @@ git commit -m "init practice blog"
 - [验收任务清单](docs/acceptance-checklist.md)
 - [截图清单](docs/screenshot-checklist.md)
 - [实验报告提纲](docs/report-outline.md)
+- [部署说明](docs/deployment-guide.md)
 
+## 建议展示顺序
+
+1. 打开首页，展示 6 个评分项覆盖情况。
+2. 打开 GitHub 仓库，展示项目结构和提交历史。
+3. 打开实验记录页，说明关键配置过程。
+4. 展示 Linux、SSH、Nginx 的真实截图。
+5. 展示部署脚本和最终网页访问结果。

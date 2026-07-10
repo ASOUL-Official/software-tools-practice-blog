@@ -1,21 +1,92 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Linux 环境配置</title>
+    <title>Linux 环境配置 | 软件开发工具实践</title>
     <link rel="stylesheet" href="../assets/styles.css" />
   </head>
   <body>
-    <header class="topbar"><a class="brand" href="../index.html">软件开发工具实践</a></header>
-    <main class="section">
-      <p class="eyebrow">Linux Config</p>
-      <h1>Linux 环境配置</h1>
-      <p>本阶段目标是在 Ubuntu 虚拟机中完成基础系统配置，包括静态 IP、主机名、用户权限和环境变量。</p>
-      <h2>关键配置</h2>
-      <p>建议使用 NAT + Host-Only 双网卡；创建 `dev` 用户并加入 sudo 组；在 `.bashrc` 中配置常用 alias 和自定义 PATH。</p>
-      <h2>建议截图</h2>
-      <p>截图应包含 `ip addr`、`hostnamectl`、`groups dev`、`echo $PATH` 和权限演示命令结果。</p>
+    <header class="topbar">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">SD</span>
+        <span>
+          <strong>软件开发工具实践</strong>
+          <small>返回验收看板</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="文章导航">
+        <a href="../index.html#score">评分项</a>
+        <a href="../docs/screenshot-checklist.md">截图清单</a>
+        <a href="../docs/report-outline.md">报告提纲</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="article-hero">
+        <p class="eyebrow">Linux Config</p>
+        <h1>Linux 环境配置</h1>
+        <p class="lead">本页用于整理 Ubuntu 虚拟机、系统 profile、用户环境变量和账户权限配置，对应评分项“Linux环境配置”和“Linux账户配置”。</p>
+      </section>
+
+      <div class="article-layout">
+        <aside class="article-aside" aria-label="本页目录">
+          <a href="#goal">目标</a>
+          <a href="#network">网络与系统</a>
+          <a href="#account">账户与权限</a>
+          <a href="#evidence">证据表</a>
+        </aside>
+
+        <div class="article-content">
+          <section id="goal" class="article-block">
+            <h2>实验目标</h2>
+            <p>完成一台可用于部署的 Linux 虚拟机配置，使它具备固定网络地址、清晰主机名、独立开发用户、可追踪的环境变量配置和合理的文件权限。</p>
+          </section>
+
+          <section id="network" class="article-block">
+            <h2>网络与系统配置</h2>
+            <pre><code>hostnamectl
+ip addr
+echo $PATH
+cat ~/.bashrc
+sudo cat /etc/profile</code></pre>
+            <p>建议使用 NAT + Host-Only 双网卡。Host-Only 地址固定后，宿主机可以稳定通过 SSH 连接虚拟机。</p>
+          </section>
+
+          <section id="account" class="article-block">
+            <h2>账户与权限配置</h2>
+            <pre><code>sudo adduser dev
+sudo usermod -aG sudo dev
+id dev
+groups dev
+ls -la /home/dev
+chmod 755 /home/dev/practice-blog</code></pre>
+            <p>账户配置要体现“普通用户日常开发，sudo 只在系统管理时使用”的原则。</p>
+          </section>
+
+          <section id="evidence" class="article-block">
+            <h2>验收证据</h2>
+            <table class="evidence-table">
+              <thead>
+                <tr>
+                  <th>评分项</th>
+                  <th>建议截图</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Linux环境配置</td>
+                  <td><code>ip addr</code>、<code>hostnamectl</code>、<code>echo $PATH</code>、profile 配置文件。</td>
+                </tr>
+                <tr>
+                  <td>Linux账户配置</td>
+                  <td><code>id dev</code>、<code>groups dev</code>、home 目录权限、关键文件权限修改。</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+      </div>
     </main>
   </body>
 </html>

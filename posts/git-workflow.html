@@ -1,21 +1,95 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>项目与代码库配置</title>
+    <title>项目与代码库配置 | 软件开发工具实践</title>
     <link rel="stylesheet" href="../assets/styles.css" />
   </head>
   <body>
-    <header class="topbar"><a class="brand" href="../index.html">软件开发工具实践</a></header>
-    <main class="section">
-      <p class="eyebrow">Git Workflow</p>
-      <h1>项目与代码库配置</h1>
-      <p>本阶段目标是建立可追踪的项目仓库。关键证据包括 Git 版本、初始化仓库、提交历史、远程仓库地址和 `.gitignore` 配置。</p>
-      <h2>操作记录</h2>
-      <p>创建 `practice-blog` 项目目录，整理 `index.html`、`assets/`、`posts/`、`docs/` 等结构；使用 Git 记录每个阶段的修改。</p>
-      <h2>建议截图</h2>
-      <p>截图应包含 `git status`、`git log --oneline`、远程仓库页面和 VS Code 源代码管理面板。</p>
+    <header class="topbar">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark">SD</span>
+        <span>
+          <strong>软件开发工具实践</strong>
+          <small>返回验收看板</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="文章导航">
+        <a href="../index.html#score">评分项</a>
+        <a href="../docs/assessment-map.md">评分映射</a>
+        <a href="../docs/acceptance-checklist.md">验收清单</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="article-hero">
+        <p class="eyebrow">Git Workflow</p>
+        <h1>项目与代码库配置</h1>
+        <p class="lead">本页用于展示项目目录、编辑器配置、Git 初始化、远程仓库绑定和阶段提交记录，对应评分项“项目与代码库配置”。</p>
+      </section>
+
+      <div class="article-layout">
+        <aside class="article-aside" aria-label="本页目录">
+          <a href="#goal">目标</a>
+          <a href="#steps">操作记录</a>
+          <a href="#evidence">证据表</a>
+          <a href="#next">后续补充</a>
+        </aside>
+
+        <div class="article-content">
+          <section id="goal" class="article-block">
+            <h2>实验目标</h2>
+            <p>建立一个结构清晰、可版本追踪、可远程协作的课程实践项目。项目不仅要能运行，还要能通过 Git 历史证明每一步配置过程。</p>
+          </section>
+
+          <section id="steps" class="article-block">
+            <h2>关键操作</h2>
+            <pre><code>git init
+git add .
+git commit -m "init software tools practice blog"
+git remote add origin https://github.com/ASOUL-Official/software-tools-practice-blog.git
+git branch -M main
+git push -u origin main</code></pre>
+            <p>后续每完成一个实验配置，都建议单独提交一次，提交信息直接写明完成内容。</p>
+          </section>
+
+          <section id="evidence" class="article-block">
+            <h2>验收证据</h2>
+            <table class="evidence-table">
+              <thead>
+                <tr>
+                  <th>证据</th>
+                  <th>说明</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>GitHub 仓库页面</td>
+                  <td>证明项目已远程托管，便于查看源码和文档。</td>
+                </tr>
+                <tr>
+                  <td><code>git log --oneline</code></td>
+                  <td>证明项目存在阶段提交记录。</td>
+                </tr>
+                <tr>
+                  <td>VS Code 项目结构</td>
+                  <td>展示 `assets`、`posts`、`docs`、`server.js` 等目录组织。</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section id="next" class="article-block">
+            <h2>后续补充</h2>
+            <ul>
+              <li>补一张 VS Code 源代码管理面板截图。</li>
+              <li>补一张 GitHub 仓库文件列表截图。</li>
+              <li>补一张本地终端执行 <code>git status</code> 和 <code>git log --oneline</code> 的截图。</li>
+            </ul>
+          </section>
+        </div>
+      </div>
     </main>
   </body>
 </html>
